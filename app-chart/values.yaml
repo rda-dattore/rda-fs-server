@@ -1,0 +1,22 @@
+replicaCount: 1
+
+server:
+  enabled: true
+  name: rda-fs-server
+  group: rda-ssh-test
+  volume:
+    fs:
+      name: gdexdata
+      size: 55Gi
+      mountPath: /data
+    glade:
+      name: glade-campaign
+      server: gladedm1.ucar.edu
+      path: /gpfs/csfs1
+      mountPath: /glade/campaign
+      readOnly: true
+  container:
+    image: docker.io/dattore/ssh-test:latest
+    port: 2222
+    memory: 2G
+    cpu: 2
